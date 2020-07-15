@@ -5,13 +5,13 @@ ENV CALIBRE_URL=https://raw.githubusercontent.com/kovidgoyal/calibre/master/setu
     BOOKSTACK_PKG=BookStack.V2.8_Linux_amd64.zip
 
 RUN apt-get update -qqy \
-  && apt-get install -y ttf-wqy-zenhei fonts-wqy-microhei apt-utils\
-  && apt-get install -y wget unzip git python xdg-utils xz-utils imagemagick \
+  && apt install -y ttf-wqy-zenhei fonts-wqy-microhei apt-utils\
+  && apt install -y wget unzip git python xdg-utils xz-utils imagemagick \
   ###install calibre
   && wget -nv -O- ${CALIBRE_URL} | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()";exit 0 \
   && rm -rf /tmp/calibre-installer-cache 
   ###install google-chrome
-RUN apt-get update && apt-get install -y gnupg2 && apt install chromium-browser \
+RUN apt update && apt install -y gnupg2 && apt install chromium-browser \
   ###install bookstack
 RUN cd /www/ \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
@@ -21,7 +21,7 @@ RUN cd /www/ \
   && chmod +x BookStack \
   && rm -rf /www/${BOOKSTACK_PKG} \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
-  && apt-get clean
+  && apt clean
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
