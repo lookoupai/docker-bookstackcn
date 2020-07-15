@@ -16,7 +16,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
   && apt-get install -y google-chrome-stable \
   && rm -rf /etc/apt/sources.list.d/google-chrome.list 
   ###install bookstack
-RUN cd /opt/ \
+RUN cd /www/ \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
   && unzip ${BOOKSTACK_PKG} \
   && mv linux bookstack \
