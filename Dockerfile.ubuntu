@@ -10,10 +10,8 @@ RUN apt-get update -qqy \
   ###install calibre
   && wget -nv -O- ${CALIBRE_URL} | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()";exit 0 \
   && rm -rf /tmp/calibre-installer-cache 
-  ###install gnupg
-RUN apt-get update && apt-get install -y gnupg2 \
   ###install google-chrome
-RUN apt-get update && apt install -y xdg-utils wget xz-utils python chromium-browser \
+RUN apt-get update && apt-get install -y gnupg2 && apt install -y xdg-utils wget xz-utils python chromium-browser \
   ###install bookstack
 RUN cd /www/ \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
