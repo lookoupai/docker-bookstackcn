@@ -1,8 +1,8 @@
 #!/bin/bash
-if [ ! -f /www/bookstack/dbupdated ]
+if [ ! -f /opt/bookstack/dbupdated ]
 then
-  /www/bookstack/BookStack install 2>&1 | tee /www/bookstack/dbupdated
+  /opt/bookstack/BookStack install 2>&1 | tee /opt/bookstack/dbupdated
 else
   echo "###db had updated,skip bookstack install,just start it!###"
 fi
-/www/bookstack/BookStack
+/opt/bookstack/BookStack
