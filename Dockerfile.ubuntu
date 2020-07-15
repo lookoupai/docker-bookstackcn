@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y gnupg2 \
   ###install google-chrome
 RUN apt install -y xdg-utils wget xz-utils python chromium-browser \
   ###install bookstack
-RUN cd /www/ \
+RUN cd /opt/ \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
   && unzip ${BOOKSTACK_PKG} \
   && mv linux bookstack \
@@ -28,7 +28,7 @@ RUN cd /www/ \
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /www/bookstack/
+WORKDIR /opt/bookstack/
 EXPOSE 8181
 
 ENTRYPOINT [ "/entrypoint.sh" ]
