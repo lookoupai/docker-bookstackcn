@@ -13,7 +13,7 @@ RUN yum install -y wget unzip git \
   && yum -y localinstall google-chrome-stable_current_x86_64.rpm \
   && rm -rf google-chrome-stable_current_x86_64.rpm \ 
   ###install bookstack
-  && cd /opt \
+  && cd /www \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
   && unzip ${BOOKSTACK_PKG} \
   && mv linux bookstack \
