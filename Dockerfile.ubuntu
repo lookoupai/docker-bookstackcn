@@ -11,12 +11,9 @@ RUN apt-get update -qqy \
   && wget -nv -O- ${CALIBRE_URL} | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()";exit 0 \
   && rm -rf /tmp/calibre-installer-cache 
   ###install gnupg
-RUN apt-get update && apt-get install -y gnupg2
+RUN apt-get update && apt-get install -y gnupg2 \
   ###install google-chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-  && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-  && apt-get install -y google-chrome-stable \
-  && rm -rf /etc/apt/sources.list.d/google-chrome.list 
+RUN apt install -y xdg-utils wget xz-utils python chromium-browser \
   ###install bookstack
 RUN cd /www/ \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
