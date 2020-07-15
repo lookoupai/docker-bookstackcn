@@ -1,8 +1,8 @@
 FROM centos:centos7
 
 ENV CALIBRE_URL=https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py \
-    BOOKSTACK_VER=v2.3 \
-    BOOKSTACK_PKG=BookStack.V2.3_Linux_amd64.zip 
+    BOOKSTACK_VER=v2.8 \
+    BOOKSTACK_PKG=BookStack.V2.8_Linux_amd64.zip
 
 RUN yum install -y wget unzip git \
   ###install calibre
