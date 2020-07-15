@@ -1,8 +1,8 @@
 FROM ubuntu
 
 ENV CALIBRE_URL=https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py \
-    BOOKSTACK_VER=v2.3 \
-    BOOKSTACK_PKG=BookStack.V2.3_Linux_amd64.zip
+    BOOKSTACK_VER=v2.8 \
+    BOOKSTACK_PKG=BookStack.V2.8_Linux_amd64.zip
 
 RUN apt-get update -qqy \
   && apt-get install -y ttf-wqy-zenhei fonts-wqy-microhei apt-utils\
@@ -29,7 +29,7 @@ RUN cd /opt/ \
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /opt/bookstack/
+WORKDIR /www/bookstack/
 EXPOSE 8181
 
 ENTRYPOINT [ "/entrypoint.sh" ]
