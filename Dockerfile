@@ -25,7 +25,7 @@ RUN yum install -y wget unzip git \
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /opt/bookstack/
+WORKDIR /www/bookstack/
 EXPOSE 8181
 
 ENTRYPOINT [ "/entrypoint.sh" ]
