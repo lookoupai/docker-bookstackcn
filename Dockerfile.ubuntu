@@ -13,22 +13,22 @@ RUN apt-get update -qqy \
   ###install gnupg
 RUN apt-get update && apt-get install -y gnupg2 \
   ###install google-chrome
-RUN apt install -y xdg-utils wget xz-utils python chromium-browser \
+RUN apt-get update && apt install -y xdg-utils wget xz-utils python chromium-browser \
   ###install bookstack
-RUN cd /opt/ \
+RUN cd /www/ \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
   && unzip ${BOOKSTACK_PKG} \
   && mv linux bookstack \
   && cd bookstack \
   && chmod +x BookStack \
-  && rm -rf /opt/${BOOKSTACK_PKG} \
+  && rm -rf /www/${BOOKSTACK_PKG} \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
   && apt-get clean
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /opt/bookstack/
+WORKDIR /www/bookstack/
 EXPOSE 8181
 
 ENTRYPOINT [ "/entrypoint.sh" ]
