@@ -13,11 +13,10 @@ RUN apt update -y \
     && apt install -y xdg-utils wget xz-utils python chromium-browser \
     && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin
   ###install bookstack
-RUN cd /opt/ \
+RUN mkdir -p /opt/bookstack \
+  && cd /opt/bookstack \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
   && unzip ${BOOKSTACK_PKG} \
-  && mv linux bookstack \
-  && cd bookstack \
   && chmod +x BookStack \
   && rm -rf /opt/${BOOKSTACK_PKG} \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
