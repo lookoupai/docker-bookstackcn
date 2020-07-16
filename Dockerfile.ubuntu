@@ -4,14 +4,14 @@ ENV CALIBRE_URL=https://raw.githubusercontent.com/kovidgoyal/calibre/master/setu
     BOOKSTACK_VER=v2.8 \
     BOOKSTACK_PKG=BookStack.V2.8_Linux_amd64.zip
 
-RUN apt-get update -qqy \
-  && apt install -y ttf-wqy-zenhei fonts-wqy-microhei apt-utils\
-  && apt install -y wget unzip git python xdg-utils xz-utils imagemagick \
-  ###install calibre
-  && wget -nv -O- ${CALIBRE_URL} | python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()";exit 0 \
-  && rm -rf /tmp/calibre-installer-cache 
-  ###install google-chrome
-RUN apt update && apt install -y gnupg2 && apt install chromium-browser \
+RUN apt update -y \
+    && apt install -y locales \
+    && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
+    && apt update -y \
+    && apt install -y fonts-wqy-zenhei fonts-wqy-microhei \
+    && apt install -y xdg-utils wget xz-utils python chromium-browser \
+    && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin
   ###install bookstack
 RUN cd /www/ \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
