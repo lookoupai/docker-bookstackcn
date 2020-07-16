@@ -13,7 +13,7 @@ RUN yum install -y wget unzip git \
   && yum -y localinstall google-chrome-stable_current_x86_64.rpm \
   && rm -rf google-chrome-stable_current_x86_64.rpm \ 
   ###install bookstack
-  && cd /www/ \
+  && cd /opt/ \
   && wget https://github.com/TruthHun/BookStack/releases/download/${BOOKSTACK_VER}/${BOOKSTACK_PKG} \
   && unzip ${BOOKSTACK_PKG} \
   && mv linux bookstack \
@@ -25,7 +25,7 @@ RUN yum install -y wget unzip git \
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /www/bookstack/
+WORKDIR /opt/bookstack/
 EXPOSE 8181
 
 ENTRYPOINT [ "/entrypoint.sh" ]
