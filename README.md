@@ -26,7 +26,7 @@ docker run -itd --name mysql \
 
 2. 修改bookstack配置文件
 
-   从https://github.com/TruthHun/BookStack上下载Release版本，复制conf至/data/bookstack/conf并更改对应配置
+   从https://github.com/TruthHun/BookStack 上下载Release版本，复制conf至/data/bookstack/conf并更改对应配置
 
 3. bookstack启动时会连接mysql，依赖mysql来存储数据。
 ```
