@@ -9,6 +9,8 @@ RUN apt update -y \
     && rm -rf /var/lib/apt/lists/* \
     && localedef -i zh_CN -c -f UTF-8 -A /usr/share/locale/locale.alias zh_CN.UTF-8 \
     && apt update -y \
+    && apt install -y tzdata \
+    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && apt install -y fonts-wqy-zenhei fonts-wqy-microhei \
     && apt install -y unzip xdg-utils wget xz-utils python chromium-browser \
     && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sh /dev/stdin
