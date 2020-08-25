@@ -25,6 +25,7 @@ docker run -itd --name mysql \
 ```
 
 2. 修改bookstack配置文件
+
    从https://github.com/TruthHun/BookStack上下载Release版本，复制conf至/data/bookstack/conf并更改对应配置
 
 3. bookstack启动时会连接mysql，依赖mysql来存储数据。
@@ -41,11 +42,15 @@ docker run -itd --name bookstack \
 http://192.168.1.1:8181
 
 ## 中文乱码
+
 使用官方MYSQL的话，因为默认不是uft-8，中文内容都是 ？号
+
 需要自己设置成uft-8，或者找别的镜像，比如https://hub.docker.com/r/dnhsoft/mysql-utf8
 
 ## 时区问题
+
 默认latest时没有设置时区的，时区是UTC，需要自己设置
+
 Tags2.8已经修改默认时区为Asia/Shanghai
 
 ## 挂载目录
