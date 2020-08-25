@@ -39,3 +39,24 @@ docker run -itd --name bookstack \
 默认管理员账号和密码为 admin/admin888
 
 http://192.168.1.1:8181
+
+## 中文乱码
+使用官方MYSQL的话，因为默认不是uft-8，中文内容都是 ？号
+需要自己设置成uft-8，或者找别的镜像，比如https://hub.docker.com/r/dnhsoft/mysql-utf8
+
+## 时区问题
+默认latest时没有设置时区的，时区是UTC，需要自己设置
+Tags2.8已经修改默认时区为Asia/Shanghai
+
+## 挂载目录
+  -v /data/BookStack/conf:/opt/bookstack/conf \ #配置文件夹
+
+  -v /data/BookStack/views:/opt/bookstack/views \ #模板文件夹
+
+  -v /data/BookStack/uploads:/opt/bookstack/uploads \ #上传附件文件夹（包括图片，文件等）
+
+  -v /data/BookStack/version_control:/opt/bookstack/version_control \ #历史版本文件夹
+
+要自用的话要修改的地方挺多的，还没试过能不能直接挂载整个bookstack，能的话应该方便点，不用挂载那么多目录
+
+构建镜像目前没有安装puppeteer
