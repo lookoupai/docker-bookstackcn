@@ -1,8 +1,8 @@
 FROM ubuntu:16.04
 
 ENV CALIBRE_URL=https://raw.githubusercontent.com/kovidgoyal/calibre/master/setup/linux-installer.py \
-    BOOKSTACK_VER=v2.8 \
-    BOOKSTACK_PKG=BookStack.V2.8_Linux_amd64.zip
+    BOOKSTACK_VER=v2.9 \
+    BOOKSTACK_PKG=BookStack.V2.9_Linux_amd64.zip
 
 RUN apt update -y \
     && apt install -y locales \
